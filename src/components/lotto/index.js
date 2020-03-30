@@ -14,8 +14,9 @@ class Lotto extends React.Component {
     this.reset = this.reset.bind(this);
   }
 
+  randomFnAdder() {}
+
   clickHandler() {
-    console.log("clicked");
     this.setState({
       numbers: [
         this.randomNum(),
@@ -29,7 +30,9 @@ class Lotto extends React.Component {
   }
 
   randomNum() {
-    return Math.floor(Math.random() * 50);
+    return Math.floor(Math.random() * 50) === 0
+      ? 1
+      : Math.floor(Math.random() * 48) + 1;
   }
 
   reset() {
@@ -43,8 +46,13 @@ class Lotto extends React.Component {
       <div>
         <section className="numbers">
           <div className="flex-row">
-            {this.state.numbers.map(num => {
-              return <span className="number">{num}</span>;
+            {this.state.numbers.map((num, index, array) => {
+              console.log(num);
+              if (array.indexOf(num) === array.lastIndexOf(num)) {
+                return <span className="number">{num}</span>;
+              } else {
+                return <span className="number">&#128169;</span>;
+              }
             })}
           </div>
         </section>
