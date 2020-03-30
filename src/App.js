@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/App.css";
 
-import Lotto from "./components";
+import Lotto from "./components/lotto";
 
 function App() {
   return (
