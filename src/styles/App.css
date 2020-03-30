@@ -1,4 +1,6 @@
 @import "../components/lotto/_style.scss";
+@import "../components/button/_style.scss";
+@import "../components/number/_style.scss";
 
 .App {
   text-align: center;
@@ -28,13 +30,4 @@
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

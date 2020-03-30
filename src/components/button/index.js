@@ -6,13 +6,7 @@ function Buttons(props) {
       <button type="reset" className="reset">
         Reset
       </button>
-      <button
-        type="button"
-        className="show"
-        onClick={() => {
-          props.random();
-        }}
-      >
+      <button type="button" className="show" onClick={props.random()}>
         Show me lucky numbers
       </button>
     </section>
