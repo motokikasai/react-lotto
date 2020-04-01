@@ -6,7 +6,8 @@
   display: flex;
 }
 
-.number {
+.number,
+.specialNum {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,4 +19,10 @@
   border-radius: 50%;
   width: 50px;
   height: 50px;
+}
+
+.specialNum {
+  background-color: #81c5ff;
+  border: 2px solid #62b6ff;
+  display: none;
 }

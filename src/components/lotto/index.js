@@ -7,14 +7,13 @@ class Lotto extends React.Component {
     super(props);
 
     this.state = {
-      numbers: []
+      numbers: [],
+      number: []
     };
 
     this.clickHandler = this.clickHandler.bind(this);
     this.reset = this.reset.bind(this);
   }
-
-  randomFnAdder() {}
 
   clickHandler() {
     this.setState({
@@ -25,20 +24,32 @@ class Lotto extends React.Component {
         this.randomNum(),
         this.randomNum(),
         this.randomNum()
-      ]
+      ],
+      number: this.randomNumTen()
     });
+
+    document.querySelector(".specialNum").style.display = "flex";
   }
 
   randomNum() {
     return Math.floor(Math.random() * 50) === 0
       ? 1
-      : Math.floor(Math.random() * 48) + 1;
+      : Math.floor(Math.random() * 49) + 1;
+  }
+
+  randomNumTen() {
+    return Math.floor(Math.random() * 10) === 0
+      ? 1
+      : Math.floor(Math.random() * 10) + 1;
   }
 
   reset() {
     this.setState({
-      numbers: []
+      numbers: [],
+      number: []
     });
+
+    document.querySelector(".specialNum").style.display = "none";
   }
 
   render() {
@@ -46,14 +57,23 @@ class Lotto extends React.Component {
       <div>
         <section className="numbers">
           <div className="flex-row">
-            {this.state.numbers.map((num, index, array) => {
-              console.log(num);
-              if (array.indexOf(num) === array.lastIndexOf(num)) {
-                return <span className="number">{num}</span>;
-              } else {
-                return <span className="number">&#128169;</span>;
-              }
-            })}
+            <div className="flex-row">
+              {this.state.numbers.map((num, index, array) => {
+                console.log(num);
+                if (array.indexOf(num) === array.lastIndexOf(num)) {
+                  return <span className="number">{num}</span>;
+                } else {
+                  return (
+                    <span className="number" role="img" aria-label="Poop">
+                      &#128169;
+                    </span>
+                  );
+                }
+              })}
+            </div>
+            <div className="inline">
+              <span className="specialNum">{this.state.number}</span>
+            </div>
           </div>
         </section>
         <section className="buttons">
