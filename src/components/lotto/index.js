@@ -1,6 +1,4 @@
 import React from "react";
-// import Number from "../number";
-// import Buttons from "../button";
 
 class Lotto extends React.Component {
   constructor(props) {
