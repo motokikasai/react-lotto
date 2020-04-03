@@ -8,23 +8,32 @@ class Lotto extends React.Component {
 
     this.state = {
       numbers: [],
-      number: []
+      number: null
     };
 
     this.clickHandler = this.clickHandler.bind(this);
     this.reset = this.reset.bind(this);
   }
 
+  getUniqueNumbers(number) {
+    let array = [];
+    while (number) {
+      let random = this.randomNum();
+      if (array.indexOf(random) === -1) {
+        // Number is unique
+        array.push(random);
+      } else {
+        // Number already exists
+        number++;
+      }
+      number--;
+    }
+    return array;
+  }
+
   clickHandler() {
     this.setState({
-      numbers: [
-        this.randomNum(),
-        this.randomNum(),
-        this.randomNum(),
-        this.randomNum(),
-        this.randomNum(),
-        this.randomNum()
-      ],
+      numbers: this.getUniqueNumbers(6),
       number: this.randomNumTen()
     });
 
