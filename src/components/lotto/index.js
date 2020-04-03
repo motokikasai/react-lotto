@@ -11,17 +11,17 @@ class Lotto extends React.Component {
       number: null
     };
 
-    this.clickHandler = this.clickHandler.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.reset = this.reset.bind(this);
   }
 
   getUniqueNumbers(number) {
     let array = [];
     while (number) {
-      let random = this.randomNum();
-      if (array.indexOf(random) === -1) {
+      let randomNumber = this.randomNum();
+      if (array.indexOf(randomNumber) === -1) {
         // Number is unique
-        array.push(random);
+        array.push(randomNumber);
       } else {
         // Number already exists
         number++;
@@ -31,7 +31,7 @@ class Lotto extends React.Component {
     return array;
   }
 
-  clickHandler() {
+  handleClick() {
     this.setState({
       numbers: this.getUniqueNumbers(6),
       number: this.randomNumTen()
@@ -55,7 +55,7 @@ class Lotto extends React.Component {
   reset() {
     this.setState({
       numbers: [],
-      number: []
+      number: null
     });
 
     document.querySelector(".specialNum").style.display = "none";
@@ -67,17 +67,8 @@ class Lotto extends React.Component {
         <section className="numbers">
           <div className="flex-row">
             <div className="flex-row">
-              {this.state.numbers.map((num, index, array) => {
-                console.log(num);
-                if (array.indexOf(num) === array.lastIndexOf(num)) {
-                  return <span className="number">{num}</span>;
-                } else {
-                  return (
-                    <span className="number" role="img" aria-label="Poop">
-                      &#128169;
-                    </span>
-                  );
-                }
+              {this.state.numbers.map(num => {
+                return <span className="number">{num}</span>;
               })}
             </div>
             <div className="inline">
@@ -89,7 +80,7 @@ class Lotto extends React.Component {
           <button type="reset" className="reset" onClick={this.reset}>
             Reset
           </button>
-          <button type="button" className="show" onClick={this.clickHandler}>
+          <button type="button" className="show" onClick={this.handleClick}>
             Show me lucky numbers
           </button>
         </section>
@@ -97,14 +88,5 @@ class Lotto extends React.Component {
     );
   }
 }
-
-// function Lotto() {
-//   return (
-//     <section className="container">
-//       <h1>Lotto 6 / 49</h1>
-//       <p>Generating lucky numbers</p>
-//     </section>
-//   );
-// }
 
 export default Lotto;
