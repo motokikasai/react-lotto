@@ -65,8 +65,12 @@ class Lotto extends React.Component {
         <section className="numbers">
           <div className="flex-row">
             <div className="flex-row">
-              {this.state.numbers.map(num => {
-                return <span className="number">{num}</span>;
+              {this.state.numbers.map((num, index) => {
+                return (
+                  <span className="number" key={index}>
+                    {num}
+                  </span>
+                );
               })}
             </div>
             <div className="inline">
