@@ -16,6 +16,3 @@ On clicking on the Reset button all numbers should be hidden.
 
 ![Example with no numbers displayed](example-lucky-numbers.png)
 
-
-
-# Multi-origin PUSH - test
