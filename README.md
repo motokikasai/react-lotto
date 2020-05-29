@@ -15,3 +15,7 @@ In addition one number between 1 and 10 should be generated and displayed. Every
 On clicking on the Reset button all numbers should be hidden.
 
 ![Example with no numbers displayed](example-lucky-numbers.png)
+
+
+
+# Multi-origin PUSH - test
